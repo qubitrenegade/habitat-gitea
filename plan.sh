@@ -101,5 +101,5 @@ do_build() {
 
 do_install() {
   cd $HAB_CACHE_SRC_PATH
-  install -D ${pkg_name} -d ${pkg_prefix}/bin/${pkg_name}
+  install -D ${pkg_name} ${pkg_prefix}/bin/${pkg_name}
 }
