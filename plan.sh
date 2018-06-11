@@ -13,7 +13,7 @@ pkg_source=code.gitea.io/gitea
 # pkg_shasum=c96051b8f2608f9035b2b0dadbd7107c4f7a00c6c66a16c6b5a41416aa9c99fa
 pkg_bin_dirs=(bin)
 pkg_deps=(core/bash core/coreutils core/git)
-pkg_build_deps=(core/make core/coreutils )
+pkg_build_deps=(core/make core/coreutils)
 pkg_scaffolding=core/scaffolding-go
 
 
@@ -169,10 +169,13 @@ do_build() {
   # git checkout ${pkg_version}
   fix_interpreter "scripts/*" core/coreutils bin/env
   export PATH=$scaffolding_go_gopath/bin:$PATH
-  make generate all
-  # TAGS="bindata" make generate all
+  # make generate all
+  TAGS="bindata" make generate all
   # TAGS="bindata" make generate build
   # TAGS="bindata" make
+  mkdir -vp ${pkg_svc_var_path}/conf
+  cp -vr $scaffolding_go_gopath/src/code.gitea.io/gitea/options/locale \
+    ${pkg_svc_var_path}/conf/
   # attach
   # do_default_build
 }

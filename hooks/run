@@ -5,4 +5,4 @@ export HOME={{pkg.svc_data_path}}
 
 pushd {{pkg.svc_var_path}}
 env | tee {{pkg.svc_data_path}}/env_out
-exec gitea web
+exec gitea web --config {{pkg.svc_config_path}}/app.ini
