@@ -3,7 +3,7 @@
 pkg_name=gitea
 pkg_origin=qubitrenegade
 pkg_version=latest
-# pkg_version=1.4.2
+# pkg_version=v1.4.2
 pkg_maintainer="QubitRenegade <qubitrenegade@gmail.com>"
 pkg_license=("MPL-2.0")
 pkg_source=code.gitea.io/gitea
@@ -166,10 +166,14 @@ do_prepare() {
 
 do_build() {
   cd $scaffolding_go_gopath/src/code.gitea.io/gitea
+  # git checkout ${pkg_version}
   fix_interpreter "scripts/*" core/coreutils bin/env
   export PATH=$scaffolding_go_gopath/bin:$PATH
   make generate all
-  attach
+  # TAGS="bindata" make generate all
+  # TAGS="bindata" make generate build
+  # TAGS="bindata" make
+  # attach
   # do_default_build
 }
 
@@ -208,4 +212,3 @@ do_strip() {
 do_end() {
   return 0
 }
-

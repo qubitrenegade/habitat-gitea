@@ -1,3 +1,8 @@
-#!{{pkgPathFor "core/bash"}}/bin/bash
+#!{{pkgPathFor "core/bash"}}/bin/bash -xe
 
+export HOME={{pkg.svc_data_path}}
+
+
+pushd {{pkg.svc_var_path}}
+env | tee {{pkg.svc_data_path}}/env_out
 exec gitea web
