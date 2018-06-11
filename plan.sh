@@ -170,7 +170,7 @@ do_build() {
   fix_interpreter "scripts/*" core/coreutils bin/env
   export PATH=$scaffolding_go_gopath/bin:$PATH
   # make generate all
-  TAGS="bindata" make generate all
+  # TAGS="bindata" make generate all
   # TAGS="bindata" make generate build
   # TAGS="bindata" make
   mkdir -vp ${pkg_svc_var_path}/conf

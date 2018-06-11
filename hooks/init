@@ -1,5 +1,5 @@
 #!{{pkgPathFor "core/bash"}}/bin/bash -xe
 
 # if [ ! -e {{pkg.svc_var_path}}/conf ]; then
-#   cp -vr {{pkg.path}}/bin/custom/conf {{pkg.svc_var_path}}/
+cp -vr {{pkg.path}}/bin/custom/conf/app.ini {{pkg.svc_config_path}}/app.ini
 # fi
