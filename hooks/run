@@ -1,8 +1,11 @@
 #!{{pkgPathFor "core/bash"}}/bin/bash -xe
 
 export HOME={{pkg.svc_data_path}}
-
-
+export GITEA_HOME=$HOME
+export GITEA_WORK_DIR=${GITEA_HOME}
+export GITEA_CUSTOM={{pkg.svc_config_path}}/custom
+export GITEA_PATH={{pkg.path}}/bin/gitea
 pushd {{pkg.svc_var_path}}
 env | tee {{pkg.svc_data_path}}/env_out
-exec gitea web --config {{pkg.svc_config_path}}/app.ini
+exec gitea web 
+# --config {{pkg.svc_config_path}}/app.ini
